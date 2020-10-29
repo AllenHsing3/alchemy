@@ -1,0 +1,7 @@
+export const UPLOAD_SUCCESS = 'UPLOAD_SUCCESS'
+export const UPLOAD_FAIL = 'UPLOAD_FAIL'
+
+export const LOAD_SUCCESS = 'LOAD_SUCCESS'
+export const LOAD_FAIL = 'LOAD_FAIL'
+
+export const REFRESH_SUCCESS = 'REFRESH_SUCCESS'
