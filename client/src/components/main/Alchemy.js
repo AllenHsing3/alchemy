@@ -9,7 +9,7 @@ export const Alchemy = ({media}) => {
     const {photo, displayUploadForm} = media
   return (
     <div className="container">
-      <div className="container-inner text">
+      <div className="container-inner">
         {displayUploadForm ? <UploadForm/> : <Photo/>}
       </div>
     </div>

@@ -5,6 +5,7 @@ import Landing from './components/layout/Landing';
 import Alchemy from './components/main/Alchemy';
 import store from './store';
 import { Provider } from 'react-redux';
+import { Background } from './components/main/Background';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div>
       <Provider store={store}>
         <Router>
+          <Background />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/start" component={Alchemy} />

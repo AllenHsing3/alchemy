@@ -3,11 +3,16 @@ import {loadPhoto, upload} from '../../actions/media'
 import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Spinner from '../layout/Spinner';
 
 
 const UploadForm = ({upload}) => {
   const [photo, setPhoto] = useState(null);
+  const [message, setMessage] = useState('')
 
+  function messageReset(){
+    setMessage('')
+  }
   const handleOnChange = (event) => {
     const file = event.target.files[0];
     setPhoto(file);
@@ -15,34 +20,41 @@ const UploadForm = ({upload}) => {
 
   const handleFormSubmit = async(event) => {
     event.preventDefault();
-    if (photo) {
+    const regex = RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i)
+    if(photo.size > 5000000){
+      setMessage('File is too large! Try something smaller')
+      setTimeout(messageReset,3000)
+    } else if(!regex.test(photo.name)){
+      setMessage('File is not an image...')
+    }else if(photo) {
       upload(photo)
+      setMessage('Uploading...')
     }
-
   };
 
+  
 
 
   return (
     <Fragment>
+      <h4 className='text'>{message}</h4>
       <Form
         onSubmit={handleFormSubmit}
         method="post"
         encType="multipart/form-data"
-        className="upload-form"
+        className="upload-form text"
       >
         <Form.Group>
-          <Form.Label>Choose photo to upload</Form.Label>
           <Form.Control type="file" name="photo" onChange={handleOnChange} />
         </Form.Group>
-        <Button
+        <button
           variant="primary"
           type="submit"
-          className={`${!photo ? 'disabled submit-btn' : 'submit-btn'}`}
+          className='btn btn-primary'
           disabled={photo ? false : true}
         >
           Upload
-        </Button>
+        </button>
       </Form>
     </Fragment>
   );
