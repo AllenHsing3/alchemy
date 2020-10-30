@@ -5,7 +5,7 @@ import axios from 'axios';
 export const upload = (photo) => {
   return async (dispatch) => {
     try {
-      let res = await axios.post('/photo')
+      // let res = await axios.post('/photo')
       const url =
         'https://slate.host/api/v1/upload-data/71624a53-f07b-45b7-8d89-70d7b6a2832a';
       let data = new FormData();
@@ -13,7 +13,7 @@ export const upload = (photo) => {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          Authorization: res.data
+          Authorization: "Basic SLA8063279f-34a9-4eb9-98a2-9da84b6cf8b6TE"
         },
         body: data,
       });
