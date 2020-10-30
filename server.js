@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.json({extended: false}))
 
 
-app.use('/photo', require('./routes/Photo'))
+app.use('/photo', require('./routes/photo'))
 
 if(process.env.NODE_ENV === 'production') {
     //Set static folder:
