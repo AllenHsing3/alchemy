@@ -1,5 +1,4 @@
 const express = require('express');
-const Photo = require('../models/Photo');
 const router = express.Router();
 const config = require('config');
 const fetch = require('node-fetch');
