@@ -18,7 +18,7 @@ if(process.env.NODE_ENV === 'production') {
     })
 }
 
-connectDB()
+// connectDB()
 
 const PORT = process.env.PORT || 5000
 
