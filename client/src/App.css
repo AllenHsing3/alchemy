@@ -11,11 +11,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -51,9 +46,9 @@
   height: 100vh;
 }
 
-.container-inner{
+.container-inner {
+  width: 100%;
   height: 100%;
-  width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -62,9 +57,9 @@
   text-align: center;
 }
 
-.container-photo{
-  height: 70vh;
-  width: 70vh;
+.container-photo {
+  width: 100%;
+  height: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -73,9 +68,12 @@
   text-align: center;
 }
 
-.photo{
-  max-width: 100%;
+.photo {
+  max-width: 90%;
   height: auto;
+  animation-name: fadeOut;
+  animation-duration: 3s;
+  animation-direction: reverse;
 }
 
 .btn {
@@ -93,13 +91,33 @@
   border-radius: 100px;
 }
 
-.btn-primary{
+.btn-primary {
   background: var(--primary-color);
   color: #fff;
 }
 
-.text{
+.text {
   color: white;
   mix-blend-mode: difference;
 }
 
+.preview-photo {
+  max-width:90%;
+  height: auto;
+}
+
+.preview-effect {
+  max-width:90%;
+  height: auto;
+  animation-name: fadeOut;
+  animation-duration: 15s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

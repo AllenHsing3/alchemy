@@ -8,7 +8,11 @@ import Spinner from '../layout/Spinner';
 
 const UploadForm = ({upload}) => {
   const [photo, setPhoto] = useState(null);
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
+  const [previewImg, setPreviewImg] = useState({
+    file: null
+  })
+  const [fadeOut, setFadeOut] = useState('preview-photo')
 
   function messageReset(){
     setMessage('')
@@ -16,6 +20,9 @@ const UploadForm = ({upload}) => {
   const handleOnChange = (event) => {
     const file = event.target.files[0];
     setPhoto(file);
+    setPreviewImg({
+      file: URL.createObjectURL(file)
+    })
   };
 
   const handleFormSubmit = async(event) => {
@@ -28,6 +35,7 @@ const UploadForm = ({upload}) => {
       setMessage('File is not an image...')
     }else if(photo) {
       upload(photo)
+      setFadeOut('preview-photo preview-effect')
       setMessage('Uploading...')
     }
   };
@@ -37,6 +45,7 @@ const UploadForm = ({upload}) => {
 
   return (
     <Fragment>
+      <img src={previewImg.file} className={fadeOut}/>
       <h4 className='text'>{message}</h4>
       <Form
         onSubmit={handleFormSubmit}
@@ -51,7 +60,6 @@ const UploadForm = ({upload}) => {
           variant="primary"
           type="submit"
           className='btn btn-primary'
-          disabled={photo ? false : true}
         >
           Upload
         </button>
